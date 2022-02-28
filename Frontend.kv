@@ -1,0 +1,298 @@
+WindowManager:
+    id: sm
+    Introduction:
+    InputWin:
+    Choice:
+    MissileOut:
+    ArtilleryOut:
+    Error:
+
+<Label>:
+    font_size: 24
+    size_hint: (1, 0.1)
+    background_color: (150/255, 161/255, 20/255 , 1)
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+<TextInput>:
+    size_hint: (1, 0.1)
+    multiline: False
+
+<Button>:
+    size_hint: (0.6, 0.1)
+    background_color: (74/255, 83/255, 32/255, 0.5)
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<Introduction>:
+    name: 'Introduction'
+    canvas.before:
+        Color:
+            rgba: (225/255, 215/255, 152/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Image:
+            source: 'Logo.png'
+            allow_stretch: True
+            #keep_ratio: False
+            size_hint: (0.5, 0.6)
+            pos_hint: {"x":.25, 'y':0.4}
+            allow_stretch: True
+
+        Button:
+            text: 'Continue'
+            size_hint: (0.6, 0.1)
+            pos_hint: {"x":0.2, 'y':0.15}
+            on_release:
+                app.root.current = 'Input'
+                root.manager.transition.direction = 'left'
+
+<InputWin>:
+    name: 'Input'
+    lat_1: lat_1
+    long_1: long_1
+    lat_2: lat_2
+    long_2: long_2
+
+    canvas.before:
+        Color:
+            rgba: (225/255, 215/255, 152/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Label:
+            text: 'Latitude of Attacker:'
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0.9}
+
+        Label:
+            text: 'Longitude of Attacker:'
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0.7}
+
+        Label:
+            text: 'Latitude of Target:'
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0.5}
+
+        Label:
+            text: 'Longitude of Target:'
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0.3}
+
+        TextInput:
+            pos_hint: {'x':0, 'y':0.8}
+            id: lat_1
+
+        TextInput:
+            pos_hint: {'x':0, 'y':0.6}
+            id: long_1
+
+        TextInput:
+            pos_hint: {'x':0, 'y':0.4}
+            id: lat_2
+
+        TextInput:
+            pos_hint: {'x':0, 'y':0.2}
+            id: long_2
+
+        Label:
+            id: condition
+            size_hint: (0.2, 0.2)
+            pos_hint: {'x':0, 'y':1}
+
+        Label:
+            id: dist
+            size_hint: (0.2, 0.2)
+            pos_hint: {'x':0.8, 'y':1}
+
+
+        Button:
+            size_hint: (0.6, 0.1)
+            pos_hint: {'x':0.2, 'y':0.05}
+            text: 'Enter'
+            on_press: root.press()
+            on_release:
+                app.root.current = condition.text
+                root.manager.transition.direction = 'left'
+
+
+
+
+<Choice>:
+    name: 'Choice'
+
+    canvas.before:
+        Color:
+            rgba: (225/255, 215/255, 152/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Label:
+            text: 'Choose your weapon'
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0.9}
+
+        Button:
+            text: 'Missile'
+            color: 1, 1, 1, 1
+            font_size: 32
+            size_hint: (0.8, 0.2)
+            pos_hint: {"x":0.1, 'y':0.6}
+            on_release:
+                app.root.current = 'MissileOut'
+                root.manager.transition.direction = 'left'
+
+
+        Button:
+            text: 'Artillery'
+            color: 1, 1, 1, 1
+            font_size: 32
+            size_hint: (0.8, 0.2)
+            pos_hint: {"x":0.1, 'y':0.2}
+            on_release:
+                app.root.current = 'ArtOut'
+                root.manager.transition.direction = 'left'
+
+<MissileOut>:
+    name: 'MissileOut'
+
+    canvas.before:
+        Color:
+            rgba: (225/255, 215/255, 152/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Label:
+            font_size: 18
+            text_size: root.width, None
+            background_color: (1, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: ''
+            id: missileout
+            size_hint: (1, 0.8)
+            color: 0, 0, 0, 1
+            pos_hint: {"x":0, 'y':0.1}
+
+        Button:
+            text: 'Display'
+            size_hint: (1, 0.1)
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0.9}
+            on_press: root.display()
+
+        Button:
+            text: 'Return'
+            size_hint: (1, 0.1)
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0}
+            on_press: missileout.text = ''
+            on_release:
+                app.root.current = 'Introduction'
+                root.manager.transition.direction = 'right'
+
+
+<ArtilleryOut>:
+    name: 'ArtOut'
+
+    canvas.before:
+        Color:
+            rgba: (225/255, 215/255, 152/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Label:
+            font_size: 18
+            text_size: root.width, None
+            background_color: (1, 0, 0, 0)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: ''
+            id: artilleryout
+            size_hint: (1, 0.8)
+            color: 0, 0, 0, 1
+            pos_hint: {"x":0, 'y':0.1}
+
+        Button:
+            text: 'Display'
+            size_hint: (1, 0.1)
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0.9}
+            on_press: root.display_a()
+
+        Button:
+            text: 'Return'
+            size_hint: (1, 0.1)
+            color: 1, 1, 1, 1
+            pos_hint: {"x":0, 'y':0}
+            on_press: artilleryout.text = ''
+            on_release:
+                app.root.current = 'Introduction'
+                root.manager.transition.direction = 'right'
+
+
+<Error>:
+    name: 'Error'
+    canvas.before:
+        Color:
+            rgba: (225/255, 215/255, 152/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'Encountered an Error'
+        font_size: 22
+        background_color: (1, 0, 0, 1)
+        canvas.before:
+            Color:
+                rgba: self.background_color
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        size_hint: (0.7, 0.1)
+        color: 1, 1, 1, 1
+        pos_hint: {"x":0.15, 'y':0.85}
+
+    Image:
+        source: 'Error.png'
+        size_hint: (0.8, 0.6)
+        pos_hint: {"x":0.1, 'y':0.2}
+
+    Button:
+        text: 'Return'
+        font_size: 32
+        size_hint: (0.6, 0.1)
+        pos_hint: {"x":0.2, 'y':0.05}
+        on_release:
+            app.root.current = "Introduction"
+            root.manager.transition.direction = 'right'
