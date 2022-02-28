@@ -43,18 +43,41 @@ WindowManager:
             size: self.size
 
     FloatLayout:
+
+        Image:
+            source: 'Camo.jpg'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: (1, 1)
+            pos_hint: {"x":0, 'y':0}
+
         Image:
             source: 'Logo.png'
             allow_stretch: True
             #keep_ratio: False
-            size_hint: (0.5, 0.6)
-            pos_hint: {"x":.25, 'y':0.4}
+            size_hint: (0.55, 0.65)
+            pos_hint: {"x":.225, 'y':0.3}
+            allow_stretch: True
+
+        Image:
+            source: 'Title.png'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: (0.8, 0.25)
+            pos_hint: {"x":.1, 'y':0.225}
             allow_stretch: True
 
         Button:
+            background_color: (74/255, 83/255, 32/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
             text: 'Continue'
             size_hint: (0.6, 0.1)
-            pos_hint: {"x":0.2, 'y':0.15}
+            pos_hint: {"x":0.2, 'y':0.1}
             on_release:
                 app.root.current = 'Input'
                 root.manager.transition.direction = 'left'
