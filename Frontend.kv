@@ -8,7 +8,7 @@ WindowManager:
     Error:
 
 <Label>:
-    font_size: 24
+    font_size: self.width/15
     size_hint: (1, 0.1)
     background_color: (150/255, 161/255, 20/255 , 1)
     canvas.before:
@@ -25,6 +25,7 @@ WindowManager:
 
 <Button>:
     size_hint: (0.6, 0.1)
+    font_size: self.width/10
     background_color: (74/255, 83/255, 32/255, 0.5)
     canvas.before:
         Color:
@@ -205,7 +206,7 @@ WindowManager:
 
     FloatLayout:
         Label:
-            font_size: 18
+            font_size: root.width/20
             text_size: root.width, None
             background_color: (1, 0, 0, 0)
             canvas.before:
@@ -250,7 +251,7 @@ WindowManager:
 
     FloatLayout:
         Label:
-            font_size: 18
+            font_size: root.width/20
             text_size: root.width, None
             background_color: (1, 0, 0, 0)
             canvas.before:
