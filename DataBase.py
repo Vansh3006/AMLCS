@@ -35,7 +35,7 @@ missile_5 = Missile("Agni-V", 5500, 8000, 24)
 missile_6 = Missile("K-15(Sagarika)", 0, 750, 7.5)
 missile_7 = Missile("BrahMos Block I, II, III", 0, 290, 3)
 missile_8 = Missile("Submarine launched BrahMos", 0, 290, 3)
-missile_9 = Missile("Nirbhaya", 1000, 1500, 0.9)
+missile_9 = Missile("Nirbhay", 1000, 1500, 0.9)
 missile_10 = Missile("Shaurya", 0, 700, 7.5)
 missile_11 = Missile("Pinaka MkI", 0, 40, 4.7)
 missile_12 = Missile("BM-21 Grad", 0, 45, 2.011)
@@ -44,9 +44,8 @@ missile_14 = Missile("Prithvi-II", 0, 350, 3)
 missile_15 = Missile("Prithvi-III", 0, 600, 3)
 missile_16 = Missile("Prithvi-III", 0, 750, 3)
 missile_17 = Missile("Dhanush", 0, 750, 3)
-missile_18 = Missile("BM-30 Smerch", 0, 850, 0.0485909)
 
 missile_directory = [missile_1, missile_2, missile_3, missile_4, missile_5,
                      missile_6, missile_7, missile_8, missile_9,missile_10,
                      missile_11, missile_12, missile_13, missile_14, missile_15,
-                     missile_16, missile_17, missile_18]
+                     missile_16, missile_17]
