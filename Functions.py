@@ -56,7 +56,7 @@ def missile_filter(directory, p):
         else:
             pass
     eligible_missile_1.sort(key=lambda x: x.speed, reverse=True)
-    for i in range(8):
+    for i in range(7):
         if i < len(eligible_missile_1):
             eligible_missile.append(eligible_missile_1[i])
             i += 1
@@ -75,7 +75,7 @@ def artillery_filter(directory, p):
         else:
             pass
     eligible_artillery_1.sort(key=lambda x: x.muzzle_velocity, reverse=True)
-    for i in range(5):
+    for i in range(3):
         if i < len(eligible_artillery_1):
             eligible_artillery.append(eligible_artillery_1[i])
             i += 1
